@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+<!--Esto lo usamos para heredar el titulo-->
+{% block title %}
+    {{ super() }} 
+    500 
+{% endblock %}
+{% block content %}
+    <h1>Lo sentimos, Ocurrio un error al conectarse al servidor</h1>
+    <p>{{error}}</p>
+{% endblock %}

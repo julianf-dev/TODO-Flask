@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+<!--Esto lo usamos para heredar el titulo-->
+{% block title %}
+    {{ super() }} 
+    404 
+{% endblock %}
+{% block content %}
+    <h1>Lo sentimos, no encontramos lo que buscbas</h1>
+    <p>{{error}}</p>
+{% endblock %}

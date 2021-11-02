@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
+<!--Esto lo usamos para heredadr el titulo-->
+{% block title %}
+    {{ super() }} 
+    Bienvenido 
+{% endblock %}
+<!--Para heredar el contenido debemos hacer con un bloque-->
+{% block content %}
+
+    {% if username%}
+    <!--Se usa filtro de capitliza-->
+        <h1>Bienvenido, {{ username | capitalize }}</h1>
+    {% endif%}
+    <!--Para usar el render template flask los ubica en la carpeta templates-->
+    <!--Para usar variables o codigo de python la sintanxis es con doble llave -->
+    <!-- Condiconales en flas-->
+    {% if user_ip %}
+        <h3>tu IP es {{ user_ip }}</h3>
+    {% else %}
+        <!-- Aqui le decimos que si no encuentra vuelva a la route de index-->
+        <a href="{{ url_for ('index') }} ">Ir a inicio</a>
+    {% endif %}
+
+    <ul>
+        {% for todo in todos%}
+        <!-- La sintaxis par avariables es doble llave aqui aplicamos la macro previamente utilizada-->
+        <!-- Renderiar una macro-->
+            {{ macros.render_todo(todo) }}
+        {% endfor %}
+    </ul>
+{% endblock  %}
