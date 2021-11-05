@@ -1,4 +1,5 @@
 <!-- Después dele macro va el nombre y el parametro-->
 {% macro render_todo(todo) %}
-    <li>Descripción: {{ todo }} </li>
+    <!-- Como viene como SnapShot debemos convertirlo a un diciconario-->
+    <li>Descripción: {{ todo.to_dict().description }} </li>
 {% endmacro %}

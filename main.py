@@ -1,12 +1,12 @@
 #variable de ambiente: set FLASK_APP=main.py
-from flask import  request, render_template, make_response, redirect,session
 import unittest
+from flask import  request, render_template, make_response, redirect,session
+from flask_login import login_required, current_user
 
 from app import create_app
 from app.firestore_service import  get_todos, get_users
 #Instanciamos nuestra app
 app = create_app()
-
 """ todos =  ['Comprar café', 'Envíar solicitud de compra', 'Entregar video'] """
 
 
@@ -41,25 +41,20 @@ def index():
 # Creamos nuestra primera ruta
 # Debemos especificar los parametros con permisos(get y post)
 @app.route('/hello', methods=['GET'])
+@login_required
+#Los decaoradores en python tienen orden (protejemos la ruta dell login)
 def hello():
     user_ip = session.get('user_ip')
     #Le estamos diciendo que busque en templates el fichero de hello.html y enviamos la variable
-    username = session.get('username')
+    username = current_user.id
 
     context = { 
         'user_ip' : user_ip,
+        #Si el username se encuentra en firebase traer los todo
         'todos' : get_todos(user_id=username),
         'username' : username 
         }
 
-    #Importamos los usuarios de firebase
-    users = get_users()
-
-    for user in users:
-        print(user.id)
-        #Convert Snapshot of google to dictonario of python
-        print(user.to_dict()['password'])
-        
     #Para no pasar todas las variables la almacenamos en una variable cotext y la pasamos como varios argumentos
     return render_template('hello.html',  **context)
 
