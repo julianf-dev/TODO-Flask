@@ -29,11 +29,11 @@
         <!--renderiamos-->
         {{ wtf.quick_form(todo_form)}}
     </div>
-    <ul>
-        {% for todo in todos%}
-        <!-- La sintaxis par avariables es doble llave aqui aplicamos la macro previamente utilizada-->
-        <!-- Renderiar una macro-->
-            {{ macros.render_todo(todo) }}
+    <ul class="list-group">
+        {% for todo in todos %}
+                <!-- La sintaxis para variables es doble llave aqui aplicamos la macro previamente utilizada-->
+                <!-- Renderiar una macro enviando el todo y los delete-->
+            {{ macros.render_todo(todo, delete_form, update_form) }}
         {% endfor %}
     </ul>
 {% endblock  %}

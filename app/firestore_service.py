@@ -34,8 +34,21 @@ def put_todo(userd_id , description):
     #COn esto llamaos la bd
     todos_collection_ref = db.collection('users').document(userd_id).collection('todos')
     #y ahora agregamos al documento de la coleccion 'todos'
-    todos_collection_ref.add({'description':description})
+    todos_collection_ref.add({'description':description, 'done':False})
+    #El done nos ayuara a saber cuando la tearea este lista o no
 
+#vamos a referencias 
 
+def delete_todo(user_id, todo_id):
+    todo_ref = _get_todo_ref(user_id, todo_id)
+    todo_ref.delete()
+    
+def update_todo(user_id, todo_id, done):
+    #transformamos la variable a booleana para que cambia cuando llegue al DB
+    todo_done = not bool(done)
+    todo_ref = _get_todo_ref(user_id, todo_id)
+    #Actualizamos que no es un done
+    todo_ref.update({'done': todo_done})
 
-
+def _get_todo_ref(user_id, todo_id):
+    return db.document('users/{}/todos/{}'.format(user_id, todo_id))

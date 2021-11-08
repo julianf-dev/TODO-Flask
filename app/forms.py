@@ -1,3 +1,4 @@
+from flask.app import Flask
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField
 from wtforms.fields.simple import SubmitField
@@ -19,5 +20,9 @@ class TodoForm(FlaskForm):
     description = StringField('Descripción',validators=[DataRequired()])
     submit = SubmitField('Crear')
 
+#Aqui hacemos el botón para borrar y esta forma la enviaremos a los diferentes parametros
+class DeleteTodoForm(FlaskForm):
+    submit = SubmitField('Borrar')
 
-    
+class UpdateTodoForm(FlaskForm):
+    submit  = SubmitField('Actualizar')

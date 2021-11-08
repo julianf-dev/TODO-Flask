@@ -1,5 +1,14 @@
-<!-- Después dele macro va el nombre y el parametro-->
-{% macro render_todo(todo) %}
-    <!-- Como viene como SnapShot debemos convertirlo a un diciconario-->
-    <li>Descripción: {{ todo.to_dict().description }} </li>
-{% endmacro %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% macro render_todo(todo, delete_form, update_form) %}
+        <!-- Después dele macro va el nombre y el parametro-->
+        <!-- Como viene como SnapShot debemos convertirlo a un -->
+        <!--Vamos a renderenciar el False del delete-->
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Descripción: {{ todo.to_dict().description }} 
+            <span class="badge bg-primary rounded-pill">{{ todo.to_dict().done }} </span>
+            {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id = todo.id)) }}
+            {{ wtf.quick_form(update_form, action=url_for('update', todo_id = todo.id, done=todo.to_dict().done)) }}
+        </li>
+{% endmacro %}    
+
