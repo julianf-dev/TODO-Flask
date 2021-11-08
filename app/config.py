@@ -1,3 +1,3 @@
 class Config:
 
-    SECRET_KEY ='SUPER_SECRETO'
+    SECRET_KEY ='LLAVE_DE_PRUEBA'

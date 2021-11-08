@@ -38,12 +38,12 @@ def server_error(error):
 
 @app.route('/')
 def index():
-    user_ip = request.remote_addr
+    #user_ip = request.remote_addr
     # Creamos una respuesta
     response = make_response(redirect('/hello'))
     """ #Creamos una cookin para obtener la ip desde la cookie del navegador
     response.set_cookie('user_ip', user_ip) """
-    session['user_ip'] = user_ip
+    #session['user_ip'] = user_ip
     return response
 
 # Creamos nuestra primera ruta
@@ -54,7 +54,7 @@ def index():
 @login_required
 # Los decaoradores en python tienen orden (protejemos la ruta dell login)
 def hello():
-    user_ip = session.get('user_ip')
+    #user_ip = session.get('user_ip')
     # Le esta48mos diciendo que busque en templates el fichero de hello.html y enviamos la variable
     username = current_user.id
 
@@ -68,7 +68,7 @@ def hello():
     update_form = UpdateTodoForm()
 
     context = {
-        'user_ip': user_ip,
+        #'user_ip': user_ip,
         # Si el username se encuentra en firebase traer los todo
         'todos': get_todos(user_id=username),
         'username': username,

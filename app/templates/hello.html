@@ -16,12 +16,6 @@
     <!--Para usar el render template flask los ubica en la carpeta templates-->
     <!--Para usar variables o codigo de python la sintanxis es con doble llave -->
     <!-- Condiconales en flas-->
-    {% if user_ip %}
-        <h3>tu IP es {{ user_ip }}</h3>
-    {% else %}
-        <!-- Aqui le decimos que si no encuentra vuelva a la route de index-->
-        <a href="{{ url_for ('index') }} ">Ir a inicio</a>
-    {% endif %}
 
     <!--Cointer para los todo_form a agregar-->
     <div class="container">
