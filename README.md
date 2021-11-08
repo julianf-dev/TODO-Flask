@@ -1,8 +1,8 @@
 # Flask | Platzi Task
-> This project is part of the course "[Curso de Flask](https://platzi.com/cursos/flask/)" of [Platzi](https://platzi.com)
+ This project is part of the course "[Curso de Flask](https://platzi.com/cursos/flask/)" of [Platzi](https://platzi.com)
 
 ## Description
-This is project is a simple TODO App made with Flask for learning purposes.
+Application of tasks, always to learn more and try to improve my skills.
 ## Requirements:
 - Python >  3.9
 
@@ -33,12 +33,15 @@ The application will run on port 5000 by default.
 ```bash
 $ flask run
 ```
+## TEST
+```bash
+$ flask test
+```
 ### Features
-- Blueprints
-- Jinja2
 - Bootstrap
+- Jinja2
+- Blueprints
+- User Login.
 - Firestore DB
 - User Signup.
-- User Login.
-- CRUD of tasks.
-- MyPY
+- CRUD
