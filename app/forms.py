@@ -12,3 +12,12 @@ class LoginForm(FlaskForm):
     password = PasswordField('Passowrd', validators=[DataRequired()])
     #una acción para envíar
     submit = SubmitField('Envíar')
+
+
+class TodoForm(FlaskForm):
+    #Plantilla de los FlaskForm
+    description = StringField('Descripción',validators=[DataRequired()])
+    submit = SubmitField('Crear')
+
+
+    

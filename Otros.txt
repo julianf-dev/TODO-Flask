@@ -15,3 +15,7 @@ gcloud init
 
 #Login to Google
 gcloud auth application-default login
+
+En caso de que queramos desplegar a githubpages (solo estaticos) podemos usar
+npm i gh-pages
+(se puede modificar en los scripts como deploy)

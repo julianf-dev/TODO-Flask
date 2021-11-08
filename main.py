@@ -1,10 +1,12 @@
 #variable de ambiente: set FLASK_APP=main.py
 import unittest
 from flask import  request, render_template, make_response, redirect,session
+from flask.helpers import flash, url_for
 from flask_login import login_required, current_user
 
 from app import create_app
-from app.firestore_service import  get_todos, get_users
+from app.firestore_service import  get_todos, put_todo
+from app.forms import TodoForm
 #Instanciamos nuestra app
 app = create_app()
 """ todos =  ['Comprar café', 'Envíar solicitud de compra', 'Entregar video'] """
@@ -40,19 +42,34 @@ def index():
 
 # Creamos nuestra primera ruta
 # Debemos especificar los parametros con permisos(get y post)
-@app.route('/hello', methods=['GET'])
+@app.route('/hello', methods=['GET', 'POST'])
 @login_required
 #Los decaoradores en python tienen orden (protejemos la ruta dell login)
 def hello():
     user_ip = session.get('user_ip')
     #Le estamos diciendo que busque en templates el fichero de hello.html y enviamos la variable
     username = current_user.id
+    #Creamos una nueva instancia de los formularios de TodoForm
+    todo_form = TodoForm()
+
+    #Vamos a recibir lo del todo_form
+    if todo_form.validate_on_submit():
+        #No se puede pponer un argumento sin nombre después de otro que si tiene nombre
+        #Lo que hacemos es enviar el id de usuario y la data o información del todo form del usuario
+        put_todo(userd_id=username,description= todo_form.description.data)
+
+        flash('La tarea se creo correctamente')
+
+        #redirijimos el usuario de nuevo a hello
+
+        return redirect(url_for('hello')) 
 
     context = { 
         'user_ip' : user_ip,
         #Si el username se encuentra en firebase traer los todo
         'todos' : get_todos(user_id=username),
-        'username' : username 
+        'username' : username,
+        'todo_form' : todo_form
         }
 
     #Para no pasar todas las variables la almacenamos en una variable cotext y la pasamos como varios argumentos

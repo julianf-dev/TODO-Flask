@@ -19,11 +19,23 @@ def get_users():
 def get_user(user_id):
     return db.collection('users').document(user_id).get()
 
+#User put (esto es para enviar información a la BD)
+def user_put(user_data):
+    user_ref = db.collection('users').document(user_data.username)
+    user_ref.set({'password' : user_data.password })
+
 # traer los todos
 def get_todos(user_id):
     return db.collection('users').document(user_id).collection('todos').get()
 
-#User put
-def user_put(user_data):
-    user_ref = db.collection('users').document(user_data.username)
-    user_ref.set({'password' : user_data.password })
+#We create the puts to send a database (se recibe el user_id porque va a estar en la coleccion del usuario)
+#Y tambiens e envia la descricion del todo
+def put_todo(userd_id , description):
+    #COn esto llamaos la bd
+    todos_collection_ref = db.collection('users').document(userd_id).collection('todos')
+    #y ahora agregamos al documento de la coleccion 'todos'
+    todos_collection_ref.add({'description':description})
+
+
+
+

@@ -23,6 +23,12 @@
         <a href="{{ url_for ('index') }} ">Ir a inicio</a>
     {% endif %}
 
+    <!--Cointer para los todo_form a agregar-->
+    <div class="container">
+        <h2>Crear tareas</h2>
+        <!--renderiamos-->
+        {{ wtf.quick_form(todo_form)}}
+    </div>
     <ul>
         {% for todo in todos%}
         <!-- La sintaxis par avariables es doble llave aqui aplicamos la macro previamente utilizada-->
