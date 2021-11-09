@@ -25,9 +25,9 @@ Application of tasks, always to learn more and try to improve my skills.
 
 4. Copy the `env.example` file into the same directory with the name `.env`
     ```bash
-    $ cd ./env.example ./.env
+    $ cd ./venv.example ./.venv
     ```
-6. I am new to this, I continue to learn and hope to improve over time, any comments and help you can provide would be welcome
+5. I am new to this, I continue to learn and hope to improve over time, any comments and help you can provide would be welcome
 ## Run it locally
 The application will run on port 5000 by default.
 ```bash
