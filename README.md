@@ -23,9 +23,9 @@ Application of tasks, always to learn more and try to improve my skills.
     (venv) $ pip install -r requirements.txt
     ```
 
-4. Copy the `env.example` file into the same directory with the name `.env`
+4.  In windows Copy the  text of `env.example` file into the file `activate.bat`
     ```bash
-    $ cd ./venv.example ./.venv
+    $ cd ./venv/Scripts/activate.bat
     ```
 5. I am new to this, I continue to learn and hope to improve over time, any comments and help you can provide would be welcome
 ## Run it locally
