@@ -9,7 +9,7 @@ Application of tasks, always to learn more and try to improve my skills.
 ## Installation
 1. Clone or download de repository:
     ```
-    $ git clone https://github.com/julian1david/TODO-Flask
+    $ git clone https://github.com/julianf-dev/TODO-Flask
     ```
 
 2. Open the console inside the project directory and create a virtual environment.
